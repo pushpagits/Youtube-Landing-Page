@@ -1,0 +1,97 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Setup */
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #232323;
+    color: white;
+    padding: 20px;
+    padding-top: 80px;
+    position: fixed;
+    height: 100vh;
+    transition: width 0.3s ease-in-out;
+    left: 0;
+    top: 0;
+}
+
+/* Sidebar Collapsed */
+#sidebar-toggle {
+    display: none;
+}
+#sidebar-toggle:checked ~ .sidebar {
+    width: 60px;
+}
+
+/* Sidebar List */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar li {
+    padding: 10px 0;
+    white-space: nowrap;
+}
+
+/* Toggle Button (Fixed & Above Sidebar) */
+.toggle-btn {
+    position: fixed;
+    left: 20px;  /* Keep it aligned */
+    top: 15px;
+    font-size: 24px;
+    background: #ff4b4b;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Ensures it's above sidebar */
+}
+
+/* Main Content */
+.content {
+    margin-left: 240px; /* Ensures spacing from sidebar */
+    padding: 20px;
+    width: calc(100% - 240px); /* Adjusts width dynamically */
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Adjust content when sidebar is closed */
+#sidebar-toggle:checked ~ .content {
+    margin-left: 100px;
+    width: calc(100% - 100px);
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns default */
+    gap: 20px; /* Ensures space between grid and sidebar */
+    transition: grid-template-columns 0.3s ease-in-out;
+}
+
+/* Adjust Grid when sidebar is closed */
+#sidebar-toggle:checked ~ .content .grid-container {
+    grid-template-columns: repeat(4, 1fr); /* 4 Columns when sidebar is collapsed */
+}
+
+/* Video Cards */
+.card {
+    background: rgb(232, 34, 34);
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+}
